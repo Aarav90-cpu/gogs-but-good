@@ -42,9 +42,6 @@ export function Navbar() {
             </>
           ) : (
             <>
-              <NavLink href="/" spa>
-                {t("home")}
-              </NavLink>
               <NavLink href="/explore/repos">{t("explore")}</NavLink>
               <NavLink href="https://gogs.io" external>
                 {t("help")}
@@ -142,9 +139,6 @@ export function Navbar() {
                   </>
                 ) : (
                   <>
-                    <MobileLink href="/" spa onClick={() => setOpen(false)}>
-                      {t("home")}
-                    </MobileLink>
                     <MobileLink href="/explore/repos" onClick={() => setOpen(false)}>
                       {t("explore")}
                     </MobileLink>
@@ -310,11 +304,11 @@ function NavLink({
   spa?: boolean;
   children: React.ReactNode;
 }) {
-  const className = "inline-flex rounded-md px-3 py-1.5 text-(--color-foreground) hover:bg-(--color-surface)";
+  const className = "inline-flex rounded-none px-3 py-1.5 text-(--color-foreground) hover:[animation:flame-flicker_2.4s_ease-in-out_infinite]";
   if (spa) {
     return (
       <Link to={href} className={className}>
-        {children}
+        <span className="text-(--color-muted-foreground)">[</span> {children} <span className="text-(--color-muted-foreground)">]</span>
       </Link>
     );
   }
@@ -324,7 +318,7 @@ function NavLink({
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={className}
     >
-      {children}
+      <span className="text-(--color-muted-foreground)">[</span> {children} <span className="text-(--color-muted-foreground)">]</span>
     </a>
   );
 }
