@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { webContext } from "@/lib/context";
 import type { UserInfo } from "@/lib/user-info";
+import { Dashboard } from "@/pages/Dashboard";
 import { Landing } from "@/pages/Landing";
 import { NotFound } from "@/pages/NotFound";
 import { ServerError } from "@/pages/ServerError";
@@ -37,7 +38,25 @@ const rootRoute = createRootRouteWithContext<RouterContext>()({
 const landingRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: Landing,
+  loader: async ({ context }) => {
+    if (!context.user) {
+      return null;
+    }
+    const res = await fetch(webContext.subURL + "/api/web/dashboard", { credentials: "same-origin" });
+    if (!res.ok) {
+      throw new Error("Failed to load dashboard data");
+    }
+    return res.json();
+  },
+  component: () => {
+    const { user } = landingRoute.useRouteContext();
+    const data = landingRoute.useLoaderData();
+    if (user && data) {
+      // @ts-ignore
+      return <Dashboard data={data} />;
+    }
+    return <Landing />;
+  },
 });
 
 const routeTree = rootRoute.addChildren([landingRoute, ...createUserRoutes(rootRoute), ...createRepoRoutes(rootRoute)]);
