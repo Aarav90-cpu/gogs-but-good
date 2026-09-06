@@ -17,9 +17,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
         <span className="size-2.5 rounded-full bg-(--color-foreground)/20" />
         <span className="ml-2 text-xs text-(--color-muted-foreground) sm:ml-3">gogs — zsh</span>
       </div>
-      <div className="font-pixel text-sm leading-relaxed text-(--color-foreground) sm:text-base">
-        {props.children}
-      </div>
+      <div className="font-pixel text-sm leading-relaxed text-(--color-foreground) sm:text-base">{props.children}</div>
     </div>
   );
 }

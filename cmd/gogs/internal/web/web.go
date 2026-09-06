@@ -82,11 +82,11 @@ func Run(configPath string, portOverride int) error {
 			m.Get("", func(c *context.Context) {
 				c.Redirect(conf.Server.Subpath + "/explore/repos")
 			})
-			m.Get("/repos", route.ExploreRepos)
-			m.Get("/users", route.ExploreUsers)
-			m.Get("/organizations", route.ExploreOrganizations)
+			m.Get("/repos", func(c *context.Context) { c.ServeWeb() })
+			m.Get("/users", func(c *context.Context) { c.ServeWeb() })
+			m.Get("/organizations", func(c *context.Context) { c.ServeWeb() })
 		}, ignSignIn)
-		m.Get("/^:type(issues|pulls)$", reqSignIn, user.Issues)
+		m.Get("/^:type(issues|pulls)$", reqSignIn, func(c *context.Context) { c.ServeWeb() })
 
 		// ***** START: User *****
 		m.Group("/user/settings", func() {

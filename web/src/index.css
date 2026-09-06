@@ -13,11 +13,11 @@
 
 @theme inline {
   --font-sans:
-    "Geist Pixel", "Geist Mono Variable", "PingFang SC", "Microsoft YaHei", Consolas, "Liberation Mono", Menlo, monospace;
+    "Geist Pixel", "Geist Mono Variable", "PingFang SC", "Microsoft YaHei", Consolas, "Liberation Mono", Menlo,
+    monospace;
   --font-mono: "Geist Mono Variable", "PingFang SC", "Microsoft YaHei", Consolas, "Liberation Mono", Menlo, monospace;
   --font-pixel: "Geist Pixel", "Geist Mono Variable", Consolas, "Liberation Mono", Menlo, monospace;
 }
-
 
 @custom-variant dark (&:where(.dark, .dark *));
 

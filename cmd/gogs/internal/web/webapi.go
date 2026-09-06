@@ -111,6 +111,13 @@ func bindJSON(model any) flamego.Handler {
 func mountWebAPIRoutes(f *flamego.Flame) {
 	f.Group("/api/web", func() {
 		f.Get("/dashboard", getDashboard)
+		f.Group("/explore", func() {
+			f.Get("/repos", getExploreRepos)
+			f.Get("/users", getExploreUsers)
+			f.Get("/orgs", getExploreOrgs)
+		})
+		f.Get("/issues", getIssues)
+		f.Get("/pulls", getIssues)
 		f.Group("/user", func() {
 			f.Get("/info", getUserInfo)
 			f.Combo("/sign-up").

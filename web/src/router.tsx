@@ -9,6 +9,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { webContext } from "@/lib/context";
 import type { UserInfo } from "@/lib/user-info";
 import { Dashboard } from "@/pages/Dashboard";
+import Explore from "@/pages/Explore";
+import ExploreOrgs from "@/pages/ExploreOrgs";
+import ExploreRepos from "@/pages/ExploreRepos";
+import ExploreUsers from "@/pages/ExploreUsers";
+import Issues from "@/pages/Issues";
 import { Landing } from "@/pages/Landing";
 import { NotFound } from "@/pages/NotFound";
 import { ServerError } from "@/pages/ServerError";
@@ -46,20 +51,63 @@ const landingRoute = createRoute({
     if (!res.ok) {
       throw new Error("Failed to load dashboard data");
     }
-    return res.json();
+    return (await res.json()) as unknown;
   },
   component: () => {
     const { user } = landingRoute.useRouteContext();
     const data = landingRoute.useLoaderData();
     if (user && data) {
-      // @ts-ignore
+      // @ts-expect-error Data is inherently any from tanstack router unless strongly typed
       return <Dashboard data={data} />;
     }
     return <Landing />;
   },
 });
 
-const routeTree = rootRoute.addChildren([landingRoute, ...createUserRoutes(rootRoute), ...createRepoRoutes(rootRoute)]);
+const exploreRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/explore",
+  component: Explore,
+});
+
+const exploreReposRoute = createRoute({
+  getParentRoute: () => exploreRoute,
+  path: "/repos",
+  component: ExploreRepos,
+});
+
+const exploreUsersRoute = createRoute({
+  getParentRoute: () => exploreRoute,
+  path: "/users",
+  component: ExploreUsers,
+});
+
+const exploreOrgsRoute = createRoute({
+  getParentRoute: () => exploreRoute,
+  path: "/organizations",
+  component: ExploreOrgs,
+});
+
+const issuesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/issues",
+  component: Issues,
+});
+
+const pullsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/pulls",
+  component: Issues,
+});
+
+const routeTree = rootRoute.addChildren([
+  landingRoute,
+  exploreRoute.addChildren([exploreReposRoute, exploreUsersRoute, exploreOrgsRoute]),
+  issuesRoute,
+  pullsRoute,
+  ...createUserRoutes(rootRoute),
+  ...createRepoRoutes(rootRoute),
+]);
 
 function makeRouter(context: RouterContext) {
   return createRouter({

@@ -304,11 +304,13 @@ function NavLink({
   spa?: boolean;
   children: React.ReactNode;
 }) {
-  const className = "inline-flex rounded-none px-3 py-1.5 text-(--color-foreground) hover:[animation:flame-flicker_2.4s_ease-in-out_infinite]";
+  const className =
+    "inline-flex rounded-none px-3 py-1.5 text-(--color-foreground) hover:[animation:flame-flicker_2.4s_ease-in-out_infinite]";
   if (spa) {
     return (
       <Link to={href} className={className}>
-        <span className="text-(--color-muted-foreground)">[</span> {children} <span className="text-(--color-muted-foreground)">]</span>
+        <span className="text-(--color-muted-foreground)">[</span> {children}{" "}
+        <span className="text-(--color-muted-foreground)">]</span>
       </Link>
     );
   }
@@ -318,7 +320,8 @@ function NavLink({
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={className}
     >
-      <span className="text-(--color-muted-foreground)">[</span> {children} <span className="text-(--color-muted-foreground)">]</span>
+      <span className="text-(--color-muted-foreground)">[</span> {children}{" "}
+      <span className="text-(--color-muted-foreground)">]</span>
     </a>
   );
 }

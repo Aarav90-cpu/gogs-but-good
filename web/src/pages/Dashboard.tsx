@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { subUrl } from "@/lib/url";
+import { Card } from "@/components/ui/card";
 import { usePageTitle } from "@/lib/page-title";
 
 interface FeedAction {
@@ -50,13 +49,12 @@ interface DashboardData {
 export function Dashboard({ data }: { data: DashboardData }) {
   const { t } = useTranslation();
   usePageTitle(t("dashboard"));
-  
+
   const [activeTab, setActiveTab] = useState<"repos" | "orgs" | "mirrors">("repos");
 
   return (
     <main className="flex flex-1 justify-center px-4 py-8 sm:px-6">
       <div className="w-full max-w-6xl flex gap-6 flex-col md:flex-row">
-        
         {/* Left Column: Feeds */}
         <div className="flex-1 space-y-4">
           <Card>
@@ -70,15 +68,17 @@ export function Dashboard({ data }: { data: DashboardData }) {
               ) : (
                 data.feeds.map((feed) => (
                   <div key={feed.id} className="flex gap-3 text-sm">
-                    <img src={feed.actAvatar} alt="" className="w-8 h-8 rounded-none border border-(--color-muted-foreground)/30" />
+                    <img
+                      src={feed.actAvatar}
+                      alt=""
+                      className="w-8 h-8 rounded-none border border-(--color-muted-foreground)/30"
+                    />
                     <div>
                       <div>
                         <Link to={`/${feed.actUserName}`} className="font-bold hover:underline">
                           {feed.actUserName}
-                        </Link>
-                        {" "}
-                        <span className="text-(--color-muted-foreground)">performed action</span>
-                        {" "}
+                        </Link>{" "}
+                        <span className="text-(--color-muted-foreground)">performed action</span>{" "}
                         <Link to={`/${feed.repoUserName}/${feed.repoName}`} className="font-bold hover:underline">
                           {feed.repoUserName}/{feed.repoName}
                         </Link>
@@ -120,7 +120,9 @@ export function Dashboard({ data }: { data: DashboardData }) {
               {activeTab === "repos" && (
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-dashed border-(--color-muted-foreground)/30 pb-2">
-                    <span className="font-bold">{t("home.my_repos")} ({data.repos.length})</span>
+                    <span className="font-bold">
+                      {t("home.my_repos")} ({data.repos.length})
+                    </span>
                     <Button variant="outline" size="sm" asChild className="h-6 px-2 text-xs">
                       <Link to="/repo/create">+</Link>
                     </Button>
@@ -128,7 +130,10 @@ export function Dashboard({ data }: { data: DashboardData }) {
                   <ul className="space-y-2">
                     {data.repos.map((repo) => (
                       <li key={repo.id} className="flex justify-between text-sm">
-                        <Link to={`/${repo.ownerName}/${repo.name}`} className="hover:underline flex items-center gap-2">
+                        <Link
+                          to={`/${repo.ownerName}/${repo.name}`}
+                          className="hover:underline flex items-center gap-2"
+                        >
                           <span className="text-(--color-muted-foreground)">{repo.isPrivate ? "[P]" : "[ ]"}</span>
                           {repo.name}
                         </Link>
@@ -145,7 +150,10 @@ export function Dashboard({ data }: { data: DashboardData }) {
                       <ul className="space-y-2">
                         {data.collaborativeRepos.map((repo) => (
                           <li key={repo.id} className="flex justify-between text-sm">
-                            <Link to={`/${repo.ownerName}/${repo.name}`} className="hover:underline flex items-center gap-2">
+                            <Link
+                              to={`/${repo.ownerName}/${repo.name}`}
+                              className="hover:underline flex items-center gap-2"
+                            >
                               <span className="text-(--color-muted-foreground)">{repo.isPrivate ? "[P]" : "[ ]"}</span>
                               {repo.ownerName}/{repo.name}
                             </Link>
@@ -161,7 +169,9 @@ export function Dashboard({ data }: { data: DashboardData }) {
               {activeTab === "orgs" && (
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-dashed border-(--color-muted-foreground)/30 pb-2">
-                    <span className="font-bold">{t("home.my_orgs")} ({data.orgs.length})</span>
+                    <span className="font-bold">
+                      {t("home.my_orgs")} ({data.orgs.length})
+                    </span>
                     <Button variant="outline" size="sm" asChild className="h-6 px-2 text-xs">
                       <Link to="/org/create">+</Link>
                     </Button>
@@ -183,7 +193,9 @@ export function Dashboard({ data }: { data: DashboardData }) {
               {activeTab === "mirrors" && (
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-dashed border-(--color-muted-foreground)/30 pb-2">
-                    <span className="font-bold">{t("home.my_mirrors")} ({data.mirrors.length})</span>
+                    <span className="font-bold">
+                      {t("home.my_mirrors")} ({data.mirrors.length})
+                    </span>
                     <Button variant="outline" size="sm" asChild className="h-6 px-2 text-xs">
                       <Link to="/repo/migrate?mirror=1">+</Link>
                     </Button>
@@ -191,7 +203,10 @@ export function Dashboard({ data }: { data: DashboardData }) {
                   <ul className="space-y-2">
                     {data.mirrors.map((repo) => (
                       <li key={repo.id} className="flex justify-between text-sm">
-                        <Link to={`/${repo.ownerName}/${repo.name}`} className="hover:underline flex items-center gap-2">
+                        <Link
+                          to={`/${repo.ownerName}/${repo.name}`}
+                          className="hover:underline flex items-center gap-2"
+                        >
                           <span className="text-(--color-muted-foreground)">[M]</span>
                           {repo.name}
                         </Link>
@@ -203,7 +218,6 @@ export function Dashboard({ data }: { data: DashboardData }) {
             </div>
           </Card>
         </div>
-
       </div>
     </main>
   );
