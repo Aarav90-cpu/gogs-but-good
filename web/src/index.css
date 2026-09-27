@@ -62,55 +62,130 @@
   --radius: 1rem;
 }
 
-/* Theme palettes aligned to Material Design 3 Expressive (Blue Baseline) */
+/* M3 reference typeface tokens — Geist Pixel is the brand face, Geist Mono the plain face. */
+:root {
+  --md-ref-typeface-brand: "Geist Pixel", "Geist Mono Variable", monospace;
+  --md-ref-typeface-plain: "Geist Mono Variable", monospace;
+}
+
+/* M3 system shape tokens (Expressive scale). */
+:root {
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+}
+
+/* Theme palettes aligned to Material Design 3 Expressive (Blue Baseline).
+   --md-sys-color-* are the canonical M3 tokens. The --color-* aliases below
+   keep Tailwind utilities and existing component code working without change. */
 :root {
   color-scheme: light dark;
 
-  --color-background: #FDFBFF;
-  --color-foreground: #1A1C1E;
-  --color-card: #FDFBFF;
-  --color-card-foreground: #1A1C1E;
-  --color-popover: #FDFBFF;
-  --color-popover-foreground: #1A1C1E;
-  --color-primary: #0061A4;
-  --color-primary-foreground: #FFFFFF;
-  --color-secondary: #D7E3F8;
-  --color-secondary-foreground: #101C2B;
-  --color-surface: #F3F4F9;
-  --color-muted-foreground: #43474E;
-  --color-destructive: #BA1A1A;
-  --color-destructive-foreground: #FFFFFF;
+  /* M3 light scheme — Blue Baseline */
+  --md-sys-color-primary: #0061A4;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #D1E4FF;
+  --md-sys-color-on-primary-container: #001D36;
+  --md-sys-color-secondary: #535F70;
+  --md-sys-color-on-secondary: #FFFFFF;
+  --md-sys-color-secondary-container: #D7E3F8;
+  --md-sys-color-on-secondary-container: #101C2B;
+  --md-sys-color-tertiary: #6B5778;
+  --md-sys-color-on-tertiary: #FFFFFF;
+  --md-sys-color-tertiary-container: #F3DAFF;
+  --md-sys-color-on-tertiary-container: #251431;
+  --md-sys-color-error: #BA1A1A;
+  --md-sys-color-on-error: #FFFFFF;
+  --md-sys-color-error-container: #FFDAD6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-background: #FDFBFF;
+  --md-sys-color-on-background: #1A1C1E;
+  --md-sys-color-surface: #FDFBFF;
+  --md-sys-color-on-surface: #1A1C1E;
+  --md-sys-color-surface-variant: #F3F4F9;
+  --md-sys-color-on-surface-variant: #43474E;
+  --md-sys-color-outline: #C3C6CF;
+  --md-sys-color-outline-variant: #C3C6CF;
+  --md-sys-color-surface-container-low: #F3F4F9;
+
+  /* App-level aliases pointing at the M3 system tokens. */
+  --color-background: var(--md-sys-color-background);
+  --color-foreground: var(--md-sys-color-on-background);
+  --color-card: var(--md-sys-color-surface);
+  --color-card-foreground: var(--md-sys-color-on-surface);
+  --color-popover: var(--md-sys-color-surface);
+  --color-popover-foreground: var(--md-sys-color-on-surface);
+  --color-primary: var(--md-sys-color-primary);
+  --color-primary-foreground: var(--md-sys-color-on-primary);
+  --color-secondary: var(--md-sys-color-secondary-container);
+  --color-secondary-foreground: var(--md-sys-color-on-secondary-container);
+  --color-surface: var(--md-sys-color-surface-container-low);
+  --color-muted-foreground: var(--md-sys-color-on-surface-variant);
+  --color-destructive: var(--md-sys-color-error);
+  --color-destructive-foreground: var(--md-sys-color-on-error);
   --color-success: #146C2E;
   --color-diff-added: #146C2E;
-  --color-diff-removed: #BA1A1A;
-  --color-border: #C3C6CF;
-  --color-input: #C3C6CF;
-  --color-ring: #0061A4;
+  --color-diff-removed: var(--md-sys-color-error);
+  --color-border: var(--md-sys-color-outline);
+  --color-input: var(--md-sys-color-outline);
+  --color-ring: var(--md-sys-color-primary);
 }
 
 :root.dark {
   color-scheme: dark;
 
-  --color-background: #1A1C1E;
-  --color-foreground: #E2E2E6;
-  --color-card: #1A1C1E;
-  --color-card-foreground: #E2E2E6;
-  --color-popover: #1A1C1E;
-  --color-popover-foreground: #E2E2E6;
-  --color-primary: #9ECAFF;
-  --color-primary-foreground: #003258;
-  --color-secondary: #3D4758;
-  --color-secondary-foreground: #D7E3F8;
-  --color-surface: #2D3136;
-  --color-muted-foreground: #8D9199;
-  --color-destructive: #FFB4AB;
-  --color-destructive-foreground: #690005;
+  /* M3 dark scheme — Blue Baseline */
+  --md-sys-color-primary: #9ECAFF;
+  --md-sys-color-on-primary: #003258;
+  --md-sys-color-primary-container: #004A77;
+  --md-sys-color-on-primary-container: #D1E4FF;
+  --md-sys-color-secondary: #BBC7DB;
+  --md-sys-color-on-secondary: #253140;
+  --md-sys-color-secondary-container: #3D4758;
+  --md-sys-color-on-secondary-container: #D7E3F8;
+  --md-sys-color-tertiary: #D8BEE4;
+  --md-sys-color-on-tertiary: #3B2948;
+  --md-sys-color-tertiary-container: #523F5F;
+  --md-sys-color-on-tertiary-container: #F3DAFF;
+  --md-sys-color-error: #FFB4AB;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000A;
+  --md-sys-color-on-error-container: #FFDAD6;
+  --md-sys-color-background: #1A1C1E;
+  --md-sys-color-on-background: #E2E2E6;
+  --md-sys-color-surface: #1A1C1E;
+  --md-sys-color-on-surface: #E2E2E6;
+  --md-sys-color-surface-variant: #2D3136;
+  --md-sys-color-on-surface-variant: #8D9199;
+  --md-sys-color-outline: #43474E;
+  --md-sys-color-outline-variant: #43474E;
+  --md-sys-color-surface-container-low: #2D3136;
+
+  /* App-level aliases — same structure as light, pointing at dark M3 tokens. */
+  --color-background: var(--md-sys-color-background);
+  --color-foreground: var(--md-sys-color-on-background);
+  --color-card: var(--md-sys-color-surface);
+  --color-card-foreground: var(--md-sys-color-on-surface);
+  --color-popover: var(--md-sys-color-surface);
+  --color-popover-foreground: var(--md-sys-color-on-surface);
+  --color-primary: var(--md-sys-color-primary);
+  --color-primary-foreground: var(--md-sys-color-on-primary);
+  --color-secondary: var(--md-sys-color-secondary-container);
+  --color-secondary-foreground: var(--md-sys-color-on-secondary-container);
+  --color-surface: var(--md-sys-color-surface-container-low);
+  --color-muted-foreground: var(--md-sys-color-on-surface-variant);
+  --color-destructive: var(--md-sys-color-error);
+  --color-destructive-foreground: var(--md-sys-color-on-error);
   --color-success: #8FCE8A;
   --color-diff-added: #8FCE8A;
-  --color-diff-removed: #FFB4AB;
-  --color-border: #43474E;
-  --color-input: #43474E;
-  --color-ring: #9ECAFF;
+  --color-diff-removed: var(--md-sys-color-error);
+  --color-border: var(--md-sys-color-outline);
+  --color-input: var(--md-sys-color-outline);
+  --color-ring: var(--md-sys-color-primary);
 }
 
 @layer base {
@@ -209,5 +284,5 @@ diffs-container {
   /* Top corners square so when the file header sticks (floating below the
      card's top edge), no rounded host corners frame the gap. The header
      carries its own rounded top corners in both docked and sticky state. */
-  border-radius: 0 0 3px 3px;
+  border-radius: 0 0 var(--md-sys-shape-corner-extra-small) var(--md-sys-shape-corner-extra-small);
 }

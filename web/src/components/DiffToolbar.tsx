@@ -81,7 +81,7 @@ export function DiffToolbar({
                   type="button"
                   onClick={onShowTreeMobile}
                   aria-label={t("repo.show_file_tree")}
-                  className="grid size-6 cursor-pointer place-items-center rounded text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground) lg:hidden"
+                  className="grid size-6 cursor-pointer place-items-center rounded-lg text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground) lg:hidden"
                 >
                   <PanelLeftOpen className="size-4" aria-hidden />
                 </button>
@@ -99,7 +99,7 @@ export function DiffToolbar({
                   aria-pressed={!!desktopTreeOpen}
                   // `pl-1` nudges the icon right so it visually aligns with
                   // the sidebar's collapsed-rail edge on desktop.
-                  className="hidden size-6 cursor-pointer place-items-center rounded text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground) lg:grid lg:pl-1"
+                  className="hidden size-6 cursor-pointer place-items-center rounded-lg text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground) lg:grid lg:pl-1"
                 >
                   {desktopTreeOpen ? (
                     <PanelLeftClose className="size-4" aria-hidden />
@@ -142,7 +142,7 @@ export function DiffToolbar({
       ) : null}
 
       <div className="flex flex-wrap items-center gap-2">
-        <div className="inline-flex h-7 items-stretch overflow-hidden rounded-md border border-(--color-border) text-xs">
+        <div className="inline-flex h-7 items-stretch overflow-hidden rounded-lg border border-(--color-border) text-xs">
           <SegmentButton active={settings.diffStyle === "unified"} onClick={() => setStyle("unified")}>
             {t("repo.diff.unified")}
           </SegmentButton>
@@ -178,7 +178,7 @@ export function DiffToolbar({
           </PopoverContent>
         </Popover>
 
-        <div className="inline-flex h-7 items-stretch overflow-hidden rounded-md border border-(--color-border) text-xs">
+        <div className="inline-flex h-7 items-stretch overflow-hidden rounded-lg border border-(--color-border) text-xs">
           <IconActionButton
             onClick={onExpandAll}
             label={t("repo.diff.expand_all_files")}
@@ -212,7 +212,7 @@ function ToolbarButton({
       type="button"
       {...rest}
       className={cn(
-        "inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-md border border-(--color-border) px-2 text-xs hover:bg-(--color-surface)",
+        "inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-lg border border-(--color-border) px-2 text-xs hover:bg-(--color-surface)",
         className,
       )}
     >
@@ -266,7 +266,7 @@ function MenuRadio({ checked, onSelect, children }: { checked: boolean; onSelect
       role="menuitemradio"
       aria-checked={checked}
       onClick={onSelect}
-      className="flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-(--color-surface)"
+      className="flex w-full cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-sm hover:bg-(--color-surface)"
     >
       <span
         aria-hidden
@@ -297,7 +297,7 @@ function MenuCheckbox({
       role="menuitemcheckbox"
       aria-checked={checked}
       onClick={onSelect}
-      className="flex w-full cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-(--color-surface)"
+      className="flex w-full cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-sm hover:bg-(--color-surface)"
     >
       <span className="grid size-4 place-items-center">
         {checked ? <Check className="size-3.5 text-(--color-primary)" aria-hidden /> : null}

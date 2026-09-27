@@ -161,7 +161,7 @@ function CommitBody({ body }: { body: string }) {
         <button
           type="button"
           onClick={() => setExpanded((e) => !e)}
-          className="mt-1.5 cursor-pointer rounded border border-(--color-border) bg-(--color-surface) px-2 py-0.5 text-xs text-(--color-muted-foreground) hover:bg-(--color-surface)/80 hover:text-(--color-foreground)"
+          className="mt-1.5 cursor-pointer rounded-lg border border-(--color-border) bg-(--color-surface) px-2 py-0.5 text-xs text-(--color-muted-foreground) hover:bg-(--color-surface)/80 hover:text-(--color-foreground)"
         >
           {expanded ? t("show_less") : t("show_more")}
         </button>
@@ -578,7 +578,7 @@ export function RepoCommit() {
       const Icon = collapsed ? ChevronRight : ChevronDown;
       const label = collapsed ? t("repo.diff.expand_file") : t("repo.diff.collapse_file");
       const buttonClass =
-        "grid size-6 cursor-pointer place-items-center rounded text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)";
+        "grid size-6 cursor-pointer place-items-center rounded-lg text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)";
       return (
         <Tooltip>
           <TooltipTrigger asChild>
@@ -634,7 +634,7 @@ export function RepoCommit() {
         item.fileDiff.type !== "rename-pure" &&
         !fullyExpandedDiffs.has(item.fileDiff);
       const buttonClass =
-        "grid size-6 cursor-pointer place-items-center rounded text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)";
+        "grid size-6 cursor-pointer place-items-center rounded-lg text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)";
       return (
         <span className="inline-flex items-center gap-0.5">
           <Tooltip>
@@ -733,7 +733,7 @@ export function RepoCommit() {
           <div className="basis-full sm:basis-auto">
             <a
               href={browseFilesHref}
-              className="inline-flex h-7 shrink-0 items-center gap-1 rounded-md border border-(--color-border) px-2 text-sm hover:bg-(--color-surface)"
+              className="inline-flex h-7 shrink-0 items-center gap-1 rounded-lg border border-(--color-border) px-2 text-sm hover:bg-(--color-surface)"
             >
               <FileCode2 className="size-3.5" aria-hidden />
               <span>{t("repo.browse_files")}</span>
@@ -774,7 +774,7 @@ export function RepoCommit() {
                   <a
                     key={p}
                     href={`${repoLink}/commit/${p}`}
-                    className="rounded bg-(--color-surface) px-1.5 py-0.5 text-(--color-foreground) hover:underline"
+                    className="rounded-lg bg-(--color-surface) px-1.5 py-0.5 text-(--color-foreground) hover:underline"
                   >
                     {p.slice(0, 7)}
                   </a>
@@ -783,7 +783,7 @@ export function RepoCommit() {
             ) : null}
             <span aria-hidden>·</span>
             <span>{t("repo.commit_label")}</span>
-            <code className="rounded bg-(--color-surface) px-1.5 py-0.5 text-(--color-foreground)">
+            <code className="rounded-lg bg-(--color-surface) px-1.5 py-0.5 text-(--color-foreground)">
               {sha.slice(0, 10)}
             </code>
             <Tooltip>
@@ -792,7 +792,7 @@ export function RepoCommit() {
                   type="button"
                   onClick={copySha}
                   aria-label={t("repo.copy_full_sha")}
-                  className="grid size-6 cursor-pointer place-items-center rounded hover:bg-(--color-surface)"
+                  className="grid size-6 cursor-pointer place-items-center rounded-lg hover:bg-(--color-surface)"
                 >
                   {copied ? (
                     <Check className="size-3.5 text-(--color-success)" aria-hidden />
@@ -845,14 +845,14 @@ export function RepoCommit() {
                         onClick={() => setTreeSearchOpen((open) => !open)}
                         aria-label={treeSearchOpen ? t("repo.search_hide") : t("repo.search_files")}
                         aria-pressed={treeSearchOpen}
-                        className="grid size-6 cursor-pointer place-items-center rounded text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
+                        className="grid size-6 cursor-pointer place-items-center rounded-lg text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
                       >
                         <Search className="size-3.5" aria-hidden />
                       </button>
                     </TooltipTrigger>
                     <TooltipContent>{treeSearchOpen ? t("repo.search_hide") : t("repo.search_files")}</TooltipContent>
                   </Tooltip>
-                  <span className="inline-flex items-stretch overflow-hidden rounded-md border border-(--color-border)">
+                  <span className="inline-flex items-stretch overflow-hidden rounded-lg border border-(--color-border)">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <button
@@ -926,7 +926,7 @@ export function RepoCommit() {
                   <span className="sr-only">{t("repo.show_file_tree")}</span>
                 </span>
                 <span className="inline-flex items-center gap-1">
-                  <span className="inline-flex items-stretch overflow-hidden rounded-md border border-(--color-border)">
+                  <span className="inline-flex items-stretch overflow-hidden rounded-lg border border-(--color-border)">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <button
@@ -958,7 +958,7 @@ export function RepoCommit() {
                     <button
                       type="button"
                       aria-label={t("close")}
-                      className="grid size-7 cursor-pointer place-items-center rounded-md text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
+                      className="grid size-7 cursor-pointer place-items-center rounded-lg text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
                     >
                       <X className="size-4" aria-hidden />
                     </button>

@@ -116,7 +116,7 @@ export function RepoHeader({ repo, activeTab }: RepoHeaderProps) {
             <img
               src={repo.avatarURL}
               alt=""
-              className="relative size-5 shrink-0 rounded border border-(--color-border) bg-(--color-surface) object-cover"
+              className="relative size-5 shrink-0 rounded-full border border-(--color-border) bg-(--color-surface) object-cover"
             />
             <a href={subUrl(`/${repo.owner}`)} className="text-(--color-primary) hover:underline">
               {repo.owner}
@@ -304,7 +304,7 @@ function OverflowMenu({ tabs, activeTab, t }: { tabs: TabDescriptor[]; activeTab
               onClick={() => setOpen(false)}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex items-center gap-2 rounded px-2 py-1.5 text-sm",
+                "flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm",
                 active
                   ? "bg-(--color-surface) font-semibold text-(--color-foreground)"
                   : "text-(--color-foreground) hover:bg-(--color-surface)",
@@ -335,7 +335,7 @@ function VisibilityBadge({ visibility }: { visibility: RepoHeaderData["visibilit
       <TooltipTrigger asChild>
         <span
           aria-label={tooltip}
-          className="ml-1 grid size-5 place-items-center rounded text-(--color-muted-foreground)"
+          className="ml-1 grid size-5 place-items-center rounded-lg text-(--color-muted-foreground)"
         >
           <Icon className="size-3.5" aria-hidden />
         </span>
@@ -439,7 +439,7 @@ function SplitActionButton({
   }
 
   return (
-    <span className="inline-flex h-7 items-stretch overflow-hidden rounded-md border border-(--color-border) text-xs">
+    <span className="inline-flex h-7 items-stretch overflow-hidden rounded-lg border border-(--color-border) text-xs">
       {action}
       <a
         href={countHref}

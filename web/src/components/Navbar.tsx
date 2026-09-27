@@ -74,7 +74,7 @@ export function Navbar() {
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger
               aria-label="Open menu"
-              className="inline-flex size-9 cursor-pointer items-center justify-center rounded-md text-(--color-foreground) hover:bg-(--color-surface)"
+              className="inline-flex size-9 cursor-pointer items-center justify-center rounded-xl text-(--color-foreground) hover:bg-(--color-surface)"
             >
               <Menu className="size-[18px]" aria-hidden />
             </PopoverTrigger>
@@ -129,7 +129,7 @@ export function Navbar() {
                       <SignOutForm>
                         <button
                           type="submit"
-                          className="flex w-full cursor-pointer rounded-sm px-2 py-1.5 text-left text-(--color-foreground) hover:bg-(--color-surface)"
+                          className="flex w-full cursor-pointer rounded-lg px-2 py-1.5 text-left text-(--color-foreground) hover:bg-(--color-surface)"
                           onClick={() => setOpen(false)}
                         >
                           {t("sign_out")}
@@ -170,7 +170,7 @@ function CreateMenu({ canCreateOrganization }: { canCreateOrganization: boolean 
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger
         aria-label={t("create_new")}
-        className="inline-flex h-9 cursor-pointer items-center gap-1 rounded-md px-2 text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
+        className="inline-flex h-9 cursor-pointer items-center gap-1 rounded-xl px-2 text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
       >
         <Plus className="size-4" aria-hidden />
         <ChevronDown className="size-3" aria-hidden />
@@ -203,7 +203,7 @@ function UserMenu({ user }: { user: UserInfo }) {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger
         aria-label={t("user_profile_and_more")}
-        className="inline-flex h-9 cursor-pointer items-center gap-1 rounded-md px-1 hover:bg-(--color-surface)"
+        className="inline-flex h-9 cursor-pointer items-center gap-1 rounded-xl px-1 hover:bg-(--color-surface)"
       >
         {user.avatarURL ? (
           <img src={user.avatarURL} alt="" width="24" height="24" className="size-6 rounded-full" />
@@ -255,7 +255,7 @@ function UserMenu({ user }: { user: UserInfo }) {
         <SignOutForm>
           <button
             type="submit"
-            className="flex w-full cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-left text-sm text-(--color-foreground) hover:bg-(--color-surface)"
+            className="flex w-full cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm text-(--color-foreground) hover:bg-(--color-surface)"
             onClick={() => setOpen(false)}
           >
             <LogOut className="size-4" aria-hidden />
@@ -285,7 +285,7 @@ function MenuLink({
       href={external ? href : subUrl(href)}
       onClick={onSelect}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm text-(--color-foreground) hover:bg-(--color-surface)"
+      className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-(--color-foreground) hover:bg-(--color-surface)"
     >
       {icon}
       {children}
@@ -376,7 +376,7 @@ function MobileLink({
   onClick?: () => void;
   children: React.ReactNode;
 }) {
-  const className = "flex w-full rounded-sm px-2 py-1.5 text-(--color-foreground) hover:bg-(--color-surface)";
+  const className = "flex w-full rounded-lg px-2 py-1.5 text-(--color-foreground) hover:bg-(--color-surface)";
   return (
     <li>
       {spa ? (

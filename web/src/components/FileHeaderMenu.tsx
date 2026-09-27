@@ -45,19 +45,19 @@ export function FileHeaderMenu({
       <PopoverContent align="end" sideOffset={4} className="w-48 p-1 text-sm">
         <ul className="flex flex-col">
           <li>
-            <a href={viewFileHref} className="flex items-center gap-2 rounded px-2 py-1.5 hover:bg-(--color-surface)">
+            <a href={viewFileHref} className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-(--color-surface)">
               <FileCode2 className="size-3.5 shrink-0" aria-hidden />
               <span>{t("repo.view_file")}</span>
             </a>
           </li>
           <li>
-            <a href={rawFileHref} className="flex items-center gap-2 rounded px-2 py-1.5 hover:bg-(--color-surface)">
+            <a href={rawFileHref} className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-(--color-surface)">
               <Binary className="size-3.5 shrink-0" aria-hidden />
               <span>{t("repo.view_raw")}</span>
             </a>
           </li>
           <li>
-            <a href={historyHref} className="flex items-center gap-2 rounded px-2 py-1.5 hover:bg-(--color-surface)">
+            <a href={historyHref} className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-(--color-surface)">
               <History className="size-3.5 shrink-0" aria-hidden />
               <span>{t("repo.view_history")}</span>
             </a>
@@ -69,7 +69,7 @@ export function FileHeaderMenu({
           ) : null}
           {editFileHref ? (
             <li>
-              <a href={editFileHref} className="flex items-center gap-2 rounded px-2 py-1.5 hover:bg-(--color-surface)">
+              <a href={editFileHref} className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-(--color-surface)">
                 <Pencil className="size-3.5 shrink-0" aria-hidden />
                 <span>{t("repo.editor.edit_file")}</span>
               </a>
@@ -79,7 +79,7 @@ export function FileHeaderMenu({
             <li>
               <a
                 href={deleteFileHref}
-                className="flex items-center gap-2 rounded px-2 py-1.5 text-(--color-destructive) hover:bg-(--color-surface)"
+                className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-(--color-destructive) hover:bg-(--color-surface)"
               >
                 <Trash2 className="size-3.5 shrink-0" aria-hidden />
                 <span>{t("repo.editor.delete_this_file")}</span>
@@ -123,7 +123,7 @@ function MenuTrigger({
     <button
       ref={ref}
       type="button"
-      className="grid size-6 cursor-pointer place-items-center rounded text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
+      className="grid size-6 cursor-pointer place-items-center rounded-lg text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
       onPointerDown={(e) => {
         e.stopPropagation();
         onPointerDown?.(e);

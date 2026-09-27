@@ -81,7 +81,7 @@ export default function ExploreOrgs() {
                   key={org.id}
                   className="border border-(--color-border) rounded-xl p-5 hover:shadow-md hover:border-(--color-primary)/50 transition-all bg-(--color-card) flex items-start gap-4"
                 >
-                  <img src={org.avatarUrl} alt="" className="w-16 h-16 rounded-lg object-cover border border-(--color-border)" />
+                  <img src={org.avatarUrl} alt="" className="w-16 h-16 rounded-full object-cover border border-(--color-border)" />
                   <div className="flex flex-col flex-1">
                     <Link to={`/${org.name}`} className="font-bold hover:underline text-(--color-primary) text-lg break-all">
                       {org.name}

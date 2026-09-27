@@ -76,7 +76,7 @@ export function SettingsMenu() {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger
         aria-label={t("settings")}
-        className="inline-flex size-9 cursor-pointer items-center justify-center rounded-md text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
+        className="inline-flex size-9 cursor-pointer items-center justify-center rounded-xl text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground)"
       >
         <Settings className="size-4" />
       </PopoverTrigger>
@@ -136,7 +136,7 @@ export function SettingsMenu() {
                   params.set("lang", lang.code);
                   reloadWithParams(params);
                 }}
-                className="flex w-full cursor-pointer items-center rounded-sm px-2 py-1.5 text-left hover:bg-(--color-surface) hover:text-(--color-foreground)"
+                className="flex w-full cursor-pointer items-center rounded-lg px-2 py-1.5 text-left hover:bg-(--color-surface) hover:text-(--color-foreground)"
               >
                 {lang.name}
               </button>
@@ -151,7 +151,7 @@ export function SettingsMenu() {
               <button
                 type="button"
                 onClick={toggleI18nDebug}
-                className="flex w-full cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-left text-sm hover:bg-(--color-surface) hover:text-(--color-foreground)"
+                className="flex w-full cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm hover:bg-(--color-surface) hover:text-(--color-foreground)"
               >
                 <Bug className="size-4" aria-hidden />
                 <span className="flex-1">i18n debug</span>

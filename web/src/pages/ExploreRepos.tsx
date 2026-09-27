@@ -87,14 +87,14 @@ export default function ExploreRepos() {
                     <Link to={`/${repo.ownerName}/${repo.name}`} className="font-bold hover:underline text-(--color-primary) text-lg break-all">
                       {repo.fullName}
                     </Link>
-                    <span className="text-(--color-muted-foreground) text-sm shrink-0 ml-4 bg-(--color-secondary) px-2 py-1 rounded-md font-medium">{repo.numStars} ★</span>
+                    <span className="text-(--color-muted-foreground) text-sm shrink-0 ml-4 bg-(--color-secondary) px-2 py-1 rounded-lg font-medium">{repo.numStars} ★</span>
                   </div>
                   {repo.description && (
                     <div className="text-sm mt-2 opacity-80 text-(--color-foreground)">{repo.description}</div>
                   )}
                   <div className="text-xs text-(--color-muted-foreground) mt-4 flex gap-2 font-medium">
-                    {repo.isMirror && <span className="bg-(--color-secondary) px-1.5 py-0.5 rounded text-(--color-secondary-foreground)">Mirror</span>}
-                    {repo.isFork && <span className="bg-(--color-secondary) px-1.5 py-0.5 rounded text-(--color-secondary-foreground)">Fork</span>}
+                    {repo.isMirror && <span className="bg-(--color-secondary) px-1.5 py-0.5 rounded-lg text-(--color-secondary-foreground)">Mirror</span>}
+                    {repo.isFork && <span className="bg-(--color-secondary) px-1.5 py-0.5 rounded-lg text-(--color-secondary-foreground)">Fork</span>}
                     <span className="flex items-center ml-auto">Updated {new Date(repo.updatedUnix * 1000).toLocaleDateString()}</span>
                   </div>
                 </div>

@@ -153,7 +153,7 @@ export function DiffSearch<L, Caret>({ items, viewRef }: Props<L, Caret>) {
   }, []);
 
   return (
-    <search className="flex h-7 items-center gap-1 rounded-md border border-(--color-border) bg-(--color-background) px-1 focus-within:border-(--color-ring) focus-within:ring-2 focus-within:ring-(--color-ring)/30">
+    <search className="flex h-7 items-center gap-1 rounded-lg border border-(--color-border) bg-(--color-background) px-1 focus-within:border-(--color-ring) focus-within:ring-2 focus-within:ring-(--color-ring)/30">
       <Search className="ml-1 size-3.5 text-(--color-muted-foreground)" aria-hidden />
       <input
         ref={inputRef}
@@ -183,7 +183,7 @@ export function DiffSearch<L, Caret>({ items, viewRef }: Props<L, Caret>) {
         onClick={() => navigate(-1)}
         disabled={matches.length === 0}
         aria-label={t("repo.search_previous_match")}
-        className="cursor-pointer rounded p-1 hover:bg-(--color-surface) disabled:cursor-not-allowed disabled:opacity-40"
+        className="cursor-pointer rounded-lg p-1 hover:bg-(--color-surface) disabled:cursor-not-allowed disabled:opacity-40"
       >
         <ChevronUp className="size-3.5" aria-hidden />
       </button>
@@ -192,7 +192,7 @@ export function DiffSearch<L, Caret>({ items, viewRef }: Props<L, Caret>) {
         onClick={() => navigate(1)}
         disabled={matches.length === 0}
         aria-label={t("repo.search_next_match")}
-        className="cursor-pointer rounded p-1 hover:bg-(--color-surface) disabled:cursor-not-allowed disabled:opacity-40"
+        className="cursor-pointer rounded-lg p-1 hover:bg-(--color-surface) disabled:cursor-not-allowed disabled:opacity-40"
       >
         <ChevronDown className="size-3.5" aria-hidden />
       </button>
