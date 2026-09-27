@@ -300,7 +300,7 @@ export function ResetPassword() {
     return (
       <div
         role="alert"
-        className="mb-4 rounded-md border border-(--color-destructive) bg-(--color-destructive)/10 px-3 py-2 text-sm text-(--color-destructive)"
+        className="mb-4 rounded-lg border border-(--color-destructive) bg-(--color-destructive)/10 px-3 py-2 text-sm text-(--color-destructive)"
       >
         {formError}
       </div>

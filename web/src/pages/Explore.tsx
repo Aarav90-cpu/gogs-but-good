@@ -30,11 +30,11 @@ export default function Explore() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-green-500 mb-2 font-mono">&gt; {t("explore")}</h1>
-        <p className="text-zinc-400 font-mono">Discover repositories, users, and organizations</p>
+        <h1 className="text-4xl font-extrabold tracking-tight text-(--color-primary) mb-2">{t("explore")}</h1>
+        <p className="text-(--color-muted-foreground) text-lg">Discover repositories, users, and organizations</p>
       </div>
 
-      <div className="border-b border-green-500/30 mb-8 border-dashed">
+      <div className="border-b border-(--color-border) mb-8">
         <nav className="-mb-px flex space-x-8" aria-label="Tabs">
           {tabs.map((tab) => {
             const isActive = location.pathname.startsWith(tab.href);
@@ -43,18 +43,18 @@ export default function Explore() {
                 key={tab.id}
                 to={tab.href}
                 className={`
-                  whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center font-mono
+                  whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center transition-colors
                   ${
                     isActive
-                      ? "border-green-500 text-green-500"
-                      : "border-transparent text-zinc-400 hover:text-green-400 hover:border-green-400/50"
+                      ? "border-(--color-primary) text-(--color-primary)"
+                      : "border-transparent text-(--color-muted-foreground) hover:text-(--color-foreground) hover:border-(--color-border)"
                   }
                 `}
               >
                 <tab.icon
                   className={`
                     -ml-0.5 mr-2 h-5 w-5
-                    ${isActive ? "text-green-500" : "text-zinc-500"}
+                    ${isActive ? "text-(--color-primary)" : "text-(--color-muted-foreground)"}
                   `}
                   aria-hidden="true"
                 />

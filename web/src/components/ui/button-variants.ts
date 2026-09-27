@@ -1,23 +1,23 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "inline-flex cursor-pointer items-center justify-center gap-2 rounded-none text-base font-mono outline-none transition-colors focus-visible:ring-1 focus-visible:ring-(--color-ring) disabled:pointer-events-none disabled:opacity-60",
+  "inline-flex cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-semibold outline-none transition-all focus-visible:ring-2 focus-visible:ring-(--color-ring) disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "border border-(--color-primary) bg-transparent text-(--color-primary) hover:bg-(--color-primary) hover:text-(--color-primary-foreground)",
-        outline: "border border-(--color-input) bg-transparent text-(--color-foreground) hover:bg-(--color-surface)",
-        ghost: "text-(--color-foreground) hover:bg-(--color-surface)",
-        link: "text-(--color-foreground) underline-offset-4 hover:[animation:flame-flicker_2.4s_ease-in-out_infinite]",
+          "bg-(--color-primary) text-(--color-primary-foreground) hover:bg-(--color-primary)/90 shadow-sm hover:shadow-md",
+        outline: "border border-(--color-border) bg-(--color-surface) text-(--color-foreground) hover:bg-(--color-muted) shadow-sm",
+        ghost: "text-(--color-foreground) hover:bg-(--color-muted) hover:text-(--color-foreground)",
+        link: "text-(--color-primary) underline-offset-4 hover:underline",
         destructive:
-          "border border-(--color-destructive) bg-transparent text-(--color-destructive) hover:bg-(--color-destructive) hover:text-(--color-destructive-foreground)",
+          "bg-(--color-destructive) text-(--color-destructive-foreground) hover:bg-(--color-destructive)/90 shadow-sm",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-8 px-3",
-        icon: "size-9",
-        inline: "h-auto p-0",
+        default: "h-11 px-6 py-2",
+        sm: "h-9 px-4 rounded-full",
+        icon: "size-11 rounded-full",
+        inline: "h-auto p-0 rounded-none",
       },
     },
     defaultVariants: {

@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
-import { Card } from "@/components/ui/card";
 import { usePageTitle } from "@/lib/page-title";
 import { subUrl } from "@/lib/url";
 
@@ -10,80 +9,45 @@ export function Landing() {
   usePageTitle();
   return (
     <main className="flex flex-1 items-center justify-center px-4 py-10 sm:px-6 sm:py-16">
-      <div className="w-full max-w-2xl">
-        <Card>
-          <div className="px-4 py-4 sm:px-5 sm:py-5 whitespace-pre-wrap">
-            <span className="text-(--color-muted-foreground)">$ </span>
-            <span>cat /etc/motd</span>
-            {"\n"}
-            <img
-              src={subUrl("/img/banner.png")}
-              alt="Gogs"
-              width="1000"
-              height="378"
-              className="mx-auto block h-auto w-full max-w-[450px] [image-rendering:pixelated]"
-            />
-            <span className="-mt-1 block text-center text-base text-(--color-foreground) sm:text-lg">
-              {t("app_desc")}
-            </span>
-            {"\n"}
-            <span className="text-(--color-muted-foreground)">$ </span>
-            <span>gogs help</span>
-            {"\n"}
-            <CmdLink href="/user/sign-in" cmd="sign-in" desc={t("sign_in")} spa />
-            {"\n"}
-            <CmdLink href="/user/sign-up" cmd="sign-up" desc={t("register")} spa />
-            {"\n"}
-            <CmdLink href="/explore/repos" cmd="explore" desc={t("explore")} />
-            {"\n"}
-            <CmdLink href="https://gogs.io" cmd="help" desc={t("help")} external />
-            {"\n"}
-            {"\n"}
-            <span className="text-(--color-muted-foreground)">$ </span>
-            <span className="inline-block w-2 animate-pulse bg-(--color-foreground) align-baseline"> </span>
-          </div>
-        </Card>
+      <div className="w-full max-w-3xl text-center">
+        <div className="mb-10 flex justify-center">
+          <img
+            src={subUrl("/img/banner.png")}
+            alt="Gogs"
+            width="500"
+            height="189"
+            className="mx-auto block h-auto w-full max-w-[450px]"
+          />
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-(--color-foreground) mb-6">
+          A painless self-hosted Git service
+        </h1>
+        <p className="text-lg sm:text-xl text-(--color-muted-foreground) mb-12 max-w-2xl mx-auto">
+          {t("app_desc")}
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            to="/user/sign-in"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-(--color-primary) px-8 py-3.5 text-base font-semibold text-(--color-primary-foreground) hover:bg-(--color-primary)/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-ring) transition-all shadow-md hover:shadow-lg"
+          >
+            {t("sign_in")}
+          </Link>
+          <Link
+            to="/user/sign-up"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-(--color-secondary) px-8 py-3.5 text-base font-semibold text-(--color-secondary-foreground) hover:bg-(--color-secondary)/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-ring) transition-all"
+          >
+            {t("register")}
+          </Link>
+        </div>
+        <div className="mt-12 flex justify-center gap-8 text-sm text-(--color-muted-foreground) font-medium">
+          <Link to="/explore/repos" className="hover:text-(--color-primary) transition-colors">
+            {t("explore")}
+          </Link>
+          <a href="https://gogs.io" target="_blank" rel="noopener noreferrer" className="hover:text-(--color-primary) transition-colors">
+            {t("help")}
+          </a>
+        </div>
       </div>
     </main>
-  );
-}
-
-function CmdLink({
-  href,
-  cmd,
-  desc,
-  external,
-  spa,
-}: {
-  href: string;
-  cmd: string;
-  desc: string;
-  external?: boolean;
-  spa?: boolean;
-}) {
-  const className =
-    "group inline-flex items-baseline gap-2 rounded-sm hover:text-(--color-foreground) hover:[animation:flame-flicker_2.4s_ease-in-out_infinite]";
-  const inner = (
-    <>
-      <span className="inline-block w-16 text-(--color-foreground) sm:w-20">{cmd}</span>
-      <span className="text-(--color-muted-foreground) group-hover:text-(--color-foreground)/80">— {desc}</span>
-      <span className="text-(--color-muted-foreground) group-hover:text-(--color-foreground)">→</span>
-    </>
-  );
-  if (spa) {
-    return (
-      <Link to={href} className={className}>
-        {inner}
-      </Link>
-    );
-  }
-  return (
-    <a
-      href={external ? href : subUrl(href)}
-      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={className}
-    >
-      {inner}
-    </a>
   );
 }

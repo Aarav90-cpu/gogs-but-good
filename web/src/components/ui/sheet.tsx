@@ -55,7 +55,7 @@ function SheetContent({ side = "right", className, children, hideCloseButton, ..
         {hideCloseButton ? null : (
           <DialogPrimitive.Close
             aria-label="Close"
-            className="absolute top-3 right-3 grid size-7 cursor-pointer place-items-center rounded-md text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground) focus-visible:outline-2 focus-visible:outline-(--color-ring)"
+            className="absolute top-3 right-3 grid size-8 cursor-pointer place-items-center rounded-full text-(--color-muted-foreground) hover:bg-(--color-surface) hover:text-(--color-foreground) focus-visible:outline-2 focus-visible:outline-(--color-ring)"
           >
             <X className="size-4" aria-hidden />
           </DialogPrimitive.Close>

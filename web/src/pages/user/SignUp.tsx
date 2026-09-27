@@ -159,7 +159,7 @@ export function SignUp() {
           {formError && (
             <div
               role="alert"
-              className="mb-4 rounded-md border border-(--color-destructive) bg-(--color-destructive)/10 px-3 py-2 text-sm text-(--color-destructive)"
+              className="mb-4 rounded-lg border border-(--color-destructive) bg-(--color-destructive)/10 px-3 py-2 text-sm text-(--color-destructive)"
             >
               {formError}
             </div>
@@ -267,7 +267,7 @@ export function SignUp() {
                     disabled={submitting}
                     onClick={refreshCaptcha}
                     aria-label={t("refresh_captcha")}
-                    className="block w-full cursor-pointer overflow-hidden rounded-md border border-(--color-border) bg-(--color-surface) outline-none focus-visible:ring-1 focus-visible:ring-(--color-ring) disabled:cursor-not-allowed disabled:opacity-60"
+                    className="block w-full cursor-pointer overflow-hidden rounded-xl border border-(--color-border) bg-(--color-surface) outline-none focus-visible:ring-2 focus-visible:ring-(--color-ring) disabled:cursor-not-allowed disabled:opacity-50 shadow-sm transition-all"
                   >
                     <img
                       src={subUrl("/captcha/image.jpeg") + "?refresh=true&v=" + captchaRefresh}

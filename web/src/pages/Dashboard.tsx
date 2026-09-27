@@ -58,9 +58,8 @@ export function Dashboard({ data }: { data: DashboardData }) {
         {/* Left Column: Feeds */}
         <div className="flex-1 space-y-4">
           <Card>
-            <div className="px-4 py-3 border-b border-dashed border-(--color-muted-foreground)/50">
-              <span className="text-(--color-muted-foreground)">$ </span>
-              <span>tail -f /var/log/activity.log</span>
+            <div className="px-6 py-4 border-b border-(--color-border) bg-(--color-surface) font-semibold text-lg text-(--color-foreground)">
+              {t("home.activity")}
             </div>
             <div className="p-4 space-y-4">
               {data.feeds.length === 0 ? (
@@ -70,10 +69,10 @@ export function Dashboard({ data }: { data: DashboardData }) {
                   <div key={feed.id} className="flex gap-3 text-sm">
                     <img
                       src={feed.actAvatar}
-                      alt=""
-                      className="w-8 h-8 rounded-none border border-(--color-muted-foreground)/30"
+                      alt={feed.actUserName}
+                      className="w-10 h-10 rounded-full border border-(--color-border) object-cover"
                     />
-                    <div>
+                    <div className="flex flex-col justify-center">
                       <div>
                         <Link to={`/${feed.actUserName}`} className="font-bold hover:underline">
                           {feed.actUserName}
@@ -95,21 +94,21 @@ export function Dashboard({ data }: { data: DashboardData }) {
         {/* Right Column: Repos & Orgs */}
         <div className="w-full md:w-80 space-y-4">
           <Card>
-            <div className="flex border-b border-dashed border-(--color-muted-foreground)/50">
+            <div className="flex p-2 gap-2 border-b border-(--color-border) bg-(--color-surface)">
               <button
-                className={`flex-1 py-2 text-center text-sm ${activeTab === "repos" ? "bg-(--color-foreground) text-(--color-background)" : "hover:bg-(--color-muted-foreground)/10"}`}
+                className={`flex-1 py-2 rounded-lg text-center text-sm font-medium transition-all ${activeTab === "repos" ? "bg-(--color-primary) text-(--color-primary-foreground) shadow-md" : "text-(--color-muted-foreground) hover:bg-(--color-secondary) hover:text-(--color-secondary-foreground)"}`}
                 onClick={() => setActiveTab("repos")}
               >
                 {t("repository")}
               </button>
               <button
-                className={`flex-1 py-2 text-center text-sm border-l border-dashed border-(--color-muted-foreground)/50 ${activeTab === "orgs" ? "bg-(--color-foreground) text-(--color-background)" : "hover:bg-(--color-muted-foreground)/10"}`}
+                className={`flex-1 py-2 rounded-lg text-center text-sm font-medium transition-all ${activeTab === "orgs" ? "bg-(--color-primary) text-(--color-primary-foreground) shadow-md" : "text-(--color-muted-foreground) hover:bg-(--color-secondary) hover:text-(--color-secondary-foreground)"}`}
                 onClick={() => setActiveTab("orgs")}
               >
                 {t("organization")}
               </button>
               <button
-                className={`flex-1 py-2 text-center text-sm border-l border-dashed border-(--color-muted-foreground)/50 ${activeTab === "mirrors" ? "bg-(--color-foreground) text-(--color-background)" : "hover:bg-(--color-muted-foreground)/10"}`}
+                className={`flex-1 py-2 rounded-lg text-center text-sm font-medium transition-all ${activeTab === "mirrors" ? "bg-(--color-primary) text-(--color-primary-foreground) shadow-md" : "text-(--color-muted-foreground) hover:bg-(--color-secondary) hover:text-(--color-secondary-foreground)"}`}
                 onClick={() => setActiveTab("mirrors")}
               >
                 {t("mirror")}
@@ -119,7 +118,7 @@ export function Dashboard({ data }: { data: DashboardData }) {
             <div className="p-4">
               {activeTab === "repos" && (
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-dashed border-(--color-muted-foreground)/30 pb-2">
+                  <div className="flex justify-between items-center border-b border-(--color-border) pb-3">
                     <span className="font-bold">
                       {t("home.my_repos")} ({data.repos.length})
                     </span>
@@ -144,7 +143,7 @@ export function Dashboard({ data }: { data: DashboardData }) {
 
                   {data.collaborativeRepos.length > 0 && (
                     <>
-                      <div className="font-bold border-b border-dashed border-(--color-muted-foreground)/30 pb-2 pt-4">
+                      <div className="font-bold border-b border-(--color-border) pb-3 pt-6 text-lg">
                         {t("home.collaborative_repos")}
                       </div>
                       <ul className="space-y-2">
@@ -168,7 +167,7 @@ export function Dashboard({ data }: { data: DashboardData }) {
 
               {activeTab === "orgs" && (
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-dashed border-(--color-muted-foreground)/30 pb-2">
+                  <div className="flex justify-between items-center border-b border-(--color-border) pb-3">
                     <span className="font-bold">
                       {t("home.my_orgs")} ({data.orgs.length})
                     </span>
@@ -192,7 +191,7 @@ export function Dashboard({ data }: { data: DashboardData }) {
 
               {activeTab === "mirrors" && (
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-dashed border-(--color-muted-foreground)/30 pb-2">
+                  <div className="flex justify-between items-center border-b border-(--color-border) pb-3">
                     <span className="font-bold">
                       {t("home.my_mirrors")} ({data.mirrors.length})
                     </span>

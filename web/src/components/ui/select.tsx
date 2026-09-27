@@ -12,9 +12,9 @@ function SelectTrigger({ className, children, ...props }: React.ComponentProps<t
   return (
     <SelectPrimitive.Trigger
       className={cn(
-        "flex h-10 w-full items-center justify-between rounded-md border border-(--color-input) bg-(--color-background) px-3 py-2 text-sm text-(--color-foreground) outline-none transition-colors",
-        "focus-visible:border-(--color-ring) focus-visible:ring-1 focus-visible:ring-(--color-ring)",
-        "disabled:cursor-not-allowed disabled:opacity-60",
+        "flex h-11 w-full items-center justify-between rounded-xl border border-(--color-border) bg-(--color-surface) px-4 py-2 text-base text-(--color-foreground) outline-none transition-all shadow-sm",
+        "focus-visible:border-(--color-primary) focus-visible:ring-2 focus-visible:ring-(--color-ring) focus-visible:bg-(--color-background)",
+        "disabled:cursor-not-allowed disabled:opacity-50",
         "data-[placeholder]:text-(--color-muted-foreground)",
         className,
       )}
@@ -39,14 +39,14 @@ function SelectContent({
       <SelectPrimitive.Content
         position={position}
         className={cn(
-          "relative z-50 max-h-(--radix-select-content-available-height) min-w-(--radix-select-trigger-width) overflow-hidden rounded-md border border-(--color-border) bg-(--color-popover) text-(--color-popover-foreground) shadow-md outline-none",
+          "relative z-50 max-h-(--radix-select-content-available-height) min-w-(--radix-select-trigger-width) overflow-hidden rounded-xl border border-(--color-border) bg-(--color-popover) text-(--color-popover-foreground) shadow-lg outline-none p-1",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
           className,
         )}
         {...props}
       >
-        <SelectPrimitive.Viewport className="p-1">{children}</SelectPrimitive.Viewport>
+        <SelectPrimitive.Viewport className="p-0">{children}</SelectPrimitive.Viewport>
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   );
@@ -56,8 +56,8 @@ function SelectItem({ className, children, ...props }: React.ComponentProps<type
   return (
     <SelectPrimitive.Item
       className={cn(
-        "relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none",
-        "focus:bg-(--color-surface) data-[disabled]:pointer-events-none data-[disabled]:opacity-60",
+        "relative flex w-full cursor-pointer select-none items-center rounded-lg py-2 pl-8 pr-2 text-sm outline-none transition-colors",
+        "focus:bg-(--color-secondary) focus:text-(--color-secondary-foreground) data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className,
       )}
       {...props}

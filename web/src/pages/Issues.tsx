@@ -86,34 +86,34 @@ export default function Issues() {
   const baseHref = isPulls ? "/pulls" : "/issues";
 
   return (
-    <div className="container mx-auto px-4 py-8 font-mono">
+    <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-green-500 mb-2">&gt; {isPulls ? t("pull_requests") : t("issues")}</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight text-(--color-primary) mb-2">{isPulls ? t("pull_requests") : t("issues")}</h1>
       </div>
 
       <div className="flex flex-col md:flex-row gap-6">
         {/* Sidebar filters */}
         <div className="w-full md:w-64 space-y-6">
           <Card>
-            <div className="flex flex-col">
+            <div className="flex flex-col p-2 gap-1">
               <Link
                 to={baseHref}
                 search={{ type: "your_repositories", state, repo, page: 1 }}
-                className={`px-4 py-3 border-b border-dashed border-(--color-muted-foreground)/30 ${type === "your_repositories" ? "bg-(--color-foreground) text-(--color-background)" : "hover:bg-(--color-muted-foreground)/10"}`}
+                className={`px-4 py-3 rounded-xl transition-colors font-medium ${type === "your_repositories" ? "bg-(--color-secondary) text-(--color-secondary-foreground)" : "text-(--color-muted-foreground) hover:bg-(--color-secondary)/50 hover:text-(--color-foreground)"}`}
               >
                 {t("home.issues.in_your_repos")}
               </Link>
               <Link
                 to={baseHref}
                 search={{ type: "assign", state, repo, page: 1 }}
-                className={`px-4 py-3 border-b border-dashed border-(--color-muted-foreground)/30 ${type === "assign" ? "bg-(--color-foreground) text-(--color-background)" : "hover:bg-(--color-muted-foreground)/10"}`}
+                className={`px-4 py-3 rounded-xl transition-colors font-medium ${type === "assign" ? "bg-(--color-secondary) text-(--color-secondary-foreground)" : "text-(--color-muted-foreground) hover:bg-(--color-secondary)/50 hover:text-(--color-foreground)"}`}
               >
                 {t("home.issues.filter_assignees")}
               </Link>
               <Link
                 to={baseHref}
                 search={{ type: "create", state, repo, page: 1 }}
-                className={`px-4 py-3 ${type === "create" ? "bg-(--color-foreground) text-(--color-background)" : "hover:bg-(--color-muted-foreground)/10"}`}
+                className={`px-4 py-3 rounded-xl transition-colors font-medium ${type === "create" ? "bg-(--color-secondary) text-(--color-secondary-foreground)" : "text-(--color-muted-foreground) hover:bg-(--color-secondary)/50 hover:text-(--color-foreground)"}`}
               >
                 {t("home.issues.filter_type")}
               </Link>
@@ -121,14 +121,14 @@ export default function Issues() {
           </Card>
 
           <Card>
-            <div className="px-4 py-2 border-b border-dashed border-(--color-muted-foreground)/30 font-bold bg-(--color-muted-foreground)/5">
+            <div className="px-6 py-4 border-b border-(--color-border) font-bold text-lg bg-(--color-surface) rounded-t-[inherit]">
               Repositories
             </div>
-            <div className="flex flex-col max-h-96 overflow-y-auto">
+            <div className="flex flex-col p-2 gap-1 max-h-96 overflow-y-auto">
               <Link
                 to={baseHref}
                 search={{ type, state, repo: 0, page: 1 }}
-                className={`px-4 py-2 text-sm ${repo === "0" ? "text-green-500 font-bold" : "hover:bg-(--color-muted-foreground)/10"}`}
+                className={`px-4 py-2 text-sm rounded-lg font-medium transition-colors ${repo === "0" ? "bg-(--color-secondary) text-(--color-secondary-foreground)" : "text-(--color-muted-foreground) hover:bg-(--color-secondary)/50 hover:text-(--color-foreground)"}`}
               >
                 All Repositories
               </Link>
@@ -137,7 +137,7 @@ export default function Issues() {
                   key={r.id}
                   to={baseHref}
                   search={{ type, state, repo: r.id, page: 1 }}
-                  className={`px-4 py-2 text-sm ${repo === r.id.toString() ? "text-green-500 font-bold" : "hover:bg-(--color-muted-foreground)/10"}`}
+                  className={`px-4 py-2 text-sm rounded-lg font-medium transition-colors ${repo === r.id.toString() ? "bg-(--color-secondary) text-(--color-secondary-foreground)" : "text-(--color-muted-foreground) hover:bg-(--color-secondary)/50 hover:text-(--color-foreground)"}`}
                 >
                   {r.fullName}
                 </Link>
@@ -152,7 +152,7 @@ export default function Issues() {
             <Link
               to={baseHref}
               search={{ type, state: "open", repo, page: 1 }}
-              className={`flex items-center gap-2 ${state === "open" ? "text-green-500 font-bold border-b border-green-500" : "text-(--color-muted-foreground) hover:text-(--color-foreground)"}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-colors ${state === "open" ? "bg-(--color-primary) text-(--color-primary-foreground) shadow-sm" : "bg-(--color-secondary)/50 text-(--color-secondary-foreground) hover:bg-(--color-secondary)"}`}
             >
               <CircleDot className="w-4 h-4" />
               {data?.issueStats?.openCount || 0} Open
@@ -160,7 +160,7 @@ export default function Issues() {
             <Link
               to={baseHref}
               search={{ type, state: "closed", repo, page: 1 }}
-              className={`flex items-center gap-2 ${state === "closed" ? "text-red-500 font-bold border-b border-red-500" : "text-(--color-muted-foreground) hover:text-(--color-foreground)"}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-colors ${state === "closed" ? "bg-(--color-primary) text-(--color-primary-foreground) shadow-sm" : "bg-(--color-secondary)/50 text-(--color-secondary-foreground) hover:bg-(--color-secondary)"}`}
             >
               <CheckCircle className="w-4 h-4" />
               {data?.issueStats?.closedCount || 0} Closed
@@ -179,13 +179,13 @@ export default function Issues() {
                 data?.issues?.map((issue) => (
                   <div
                     key={issue.id}
-                    className="p-4 border-b border-dashed border-(--color-muted-foreground)/30 hover:bg-(--color-muted-foreground)/5 flex gap-4 last:border-b-0"
+                    className="p-5 border-b border-(--color-border) hover:bg-(--color-secondary)/20 transition-colors flex gap-4 last:border-b-0"
                   >
                     <div className="pt-1">
                       {issue.isClosed ? (
-                        <CheckCircle className="w-5 h-5 text-red-500" />
+                        <CheckCircle className="w-5 h-5 text-(--color-destructive)" />
                       ) : (
-                        <CircleDot className="w-5 h-5 text-green-500" />
+                        <CircleDot className="w-5 h-5 text-(--color-success)" />
                       )}
                     </div>
                     <div className="flex-1">
@@ -197,12 +197,12 @@ export default function Issues() {
                           {issue.title}
                         </Link>
                       </div>
-                      <div className="text-sm text-(--color-muted-foreground) mt-1">
-                        <Link to={`/${issue.repoFullName}`} className="hover:underline text-green-400">
+                      <div className="text-sm text-(--color-muted-foreground) mt-2">
+                        <Link to={`/${issue.repoFullName}`} className="hover:underline text-(--color-primary) font-medium">
                           {issue.repoFullName}
                         </Link>{" "}
                         #{issue.index} opened by{" "}
-                        <Link to={`/${issue.poster}`} className="hover:underline text-green-400">
+                        <Link to={`/${issue.poster}`} className="hover:underline font-medium text-(--color-foreground)">
                           {issue.poster}
                         </Link>{" "}
                         {new Date(issue.createdUnix * 1000).toLocaleDateString()}

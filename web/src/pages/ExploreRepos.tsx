@@ -54,20 +54,19 @@ export default function ExploreRepos() {
   }, [q, page]);
 
   return (
-    <div className="space-y-4 font-mono">
+    <div className="space-y-4">
       <Card>
-        <div className="p-4 border-b border-dashed border-(--color-muted-foreground)/50 flex justify-between items-center bg-(--color-muted-foreground)/5">
-          <form className="flex gap-2">
-            <span className="text-(--color-muted-foreground)">&gt;</span>
+        <div className="p-4 border-b border-(--color-border) flex justify-between items-center bg-(--color-surface) rounded-t-[inherit]">
+          <form className="flex gap-2 w-full max-w-lg items-center bg-(--color-background) border border-(--color-border) rounded-full px-4 py-1.5 focus-within:ring-2 ring-(--color-ring)">
             <input
               type="text"
               name="q"
               defaultValue={q}
               placeholder={t("explore.search")}
-              className="bg-transparent border-none outline-none flex-1 text-sm"
+              className="bg-transparent border-none outline-none flex-1 text-sm text-(--color-foreground)"
             />
-            <button type="submit" className="text-green-500 hover:underline text-sm">
-              [ SEARCH ]
+            <button type="submit" className="text-(--color-primary) hover:text-(--color-primary-foreground) hover:bg-(--color-primary) px-3 py-1 rounded-full transition-colors text-sm font-medium">
+              Search
             </button>
           </form>
         </div>
@@ -82,21 +81,21 @@ export default function ExploreRepos() {
               {data?.repos?.map((repo) => (
                 <div
                   key={repo.id}
-                  className="border border-dashed border-(--color-muted-foreground)/30 p-4 hover:border-green-500/50 transition-colors"
+                  className="border border-(--color-border) rounded-xl p-5 hover:shadow-md hover:border-(--color-primary)/50 transition-all bg-(--color-card)"
                 >
-                  <div className="flex justify-between">
-                    <Link to={`/${repo.ownerName}/${repo.name}`} className="font-bold hover:underline text-green-400">
+                  <div className="flex justify-between items-start">
+                    <Link to={`/${repo.ownerName}/${repo.name}`} className="font-bold hover:underline text-(--color-primary) text-lg break-all">
                       {repo.fullName}
                     </Link>
-                    <span className="text-(--color-muted-foreground) text-sm">{repo.numStars} ★</span>
+                    <span className="text-(--color-muted-foreground) text-sm shrink-0 ml-4 bg-(--color-secondary) px-2 py-1 rounded-md font-medium">{repo.numStars} ★</span>
                   </div>
                   {repo.description && (
                     <div className="text-sm mt-2 opacity-80 text-(--color-foreground)">{repo.description}</div>
                   )}
-                  <div className="text-xs text-(--color-muted-foreground) mt-4 flex gap-2">
-                    {repo.isMirror && <span>[MIRROR]</span>}
-                    {repo.isFork && <span>[FORK]</span>}
-                    <span>Updated {new Date(repo.updatedUnix * 1000).toLocaleDateString()}</span>
+                  <div className="text-xs text-(--color-muted-foreground) mt-4 flex gap-2 font-medium">
+                    {repo.isMirror && <span className="bg-(--color-secondary) px-1.5 py-0.5 rounded text-(--color-secondary-foreground)">Mirror</span>}
+                    {repo.isFork && <span className="bg-(--color-secondary) px-1.5 py-0.5 rounded text-(--color-secondary-foreground)">Fork</span>}
+                    <span className="flex items-center ml-auto">Updated {new Date(repo.updatedUnix * 1000).toLocaleDateString()}</span>
                   </div>
                 </div>
               ))}
